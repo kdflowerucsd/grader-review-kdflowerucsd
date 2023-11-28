@@ -14,3 +14,16 @@ echo 'Finished cloning'
 
 # Then, add here code to compile and run, and do any post-processing of the
 # tests
+FILE=./student-submission/ListExamples.java
+if [ -f "$FILE" ]; then 
+    echo "its here"
+else
+    echo "The file doesn't exist"
+    exit
+fi
+cp TestListExamples.java ./grading-area
+cp ./student-submission/ListExamples.java ./grading-area
+cp -r lib grading-area/
+cd grading-area
+
+output='java -cp $CPATH org.junit.runner.JUnitCore TestListExamples'
